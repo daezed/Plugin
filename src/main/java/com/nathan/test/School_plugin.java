@@ -65,10 +65,12 @@ public class School_plugin extends JavaPlugin implements Listener{
     }
     //try to get time
     public boolean chaketime() {
+        int i =1;
         for (int j = 0; j < time.size(); j++) {
-        if ((c.get(Calendar.HOUR) >= gettime(j+1)[0]) && (c.get(Calendar.HOUR) <= gettime(j+1)[1])) {
+        if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
             return true;
         }
+            i+=2;
     }
             return false;
     }

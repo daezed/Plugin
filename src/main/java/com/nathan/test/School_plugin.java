@@ -53,6 +53,7 @@ public class School_plugin extends JavaPlugin implements Listener{
         Player p = e.getPlayer();
         pl=p;
 
+
             if (chaketime()) {
                 p.kickPlayer("not time yet");
             } else {
@@ -80,10 +81,11 @@ public class School_plugin extends JavaPlugin implements Listener{
     public int[] gettime(int k/*String in*/){
         int[] timei = new int[2];
       // int i=0;
-        for (int i = k-1; (i < time.size())&&(i<=k); i++) {
+        for (int i = k-1; (i < time.size())&&(i<k); i++) {
             //System.out.println(in.get(i));
             for (String retval: time.get(i).split("\\|")){
                 timei[i]=Integer.parseInt(retval);
+                pl.setDisplayName(time.get(i));
                 //pl.chat(time.get(i));
                 i++;
             }

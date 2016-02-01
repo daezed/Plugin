@@ -19,7 +19,6 @@ import java.util.GregorianCalendar;
 public class School_plugin extends JavaPlugin implements Listener {
     public Calendar c = GregorianCalendar.getInstance();
     int[] times= new int[14];
-
     boolean timecheack =false;
     @Override
     public void onEnable() {

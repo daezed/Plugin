@@ -60,7 +60,7 @@ public class main extends JavaPlugin implements Listener{
             p.kickPlayer("not time yet");
         } else {
             p.sendMessage(ChatColor.RED + "Welcome to the server");
-       /* int db = gettime(1)[0];
+       /*int db = gettime(1)[0];
         int db1 = gettime(1)[1];
         p.chat(String.valueOf(db));
         p.chat(String.valueOf(db1));*/
@@ -68,7 +68,7 @@ public class main extends JavaPlugin implements Listener{
     }
     //try to get time
     public boolean chaketime() {
-        for (int j = 0; j < times.length; j++) {
+        for (int j = 0; j < times.length; j+=2) {
             if ((c.get(Calendar.HOUR) >= times[j]) && (c.get(Calendar.HOUR) <= times[j+1])) {
                 return true;
             }

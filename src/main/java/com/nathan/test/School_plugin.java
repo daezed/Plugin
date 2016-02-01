@@ -23,7 +23,7 @@ import java.util.List;
 
 public class School_plugin extends JavaPlugin implements Listener{
     public Calendar c = GregorianCalendar.getInstance();
-    public List<String> time= new ArrayList<String>();
+    int[] times = new  int[14];
     public String i="0|0";
     public Player pl;
     @Override
@@ -38,7 +38,7 @@ public class School_plugin extends JavaPlugin implements Listener{
     @Override// comand to add time to list
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("Addtime")) { // If the player typed /basic then do the following...
-                time.add(args[0]);
+                spliter(args[0]);
             //i=args[0];
             Player p = (Player) sender;
             p.chat(i);
@@ -51,43 +51,46 @@ public class School_plugin extends JavaPlugin implements Listener{
     @EventHandler //player join event
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
-        pl=p;
-            if (chaketime()) {
-                p.kickPlayer("not time yet");
-            } else {
-                p.sendMessage(ChatColor.RED + "Welcome to the server");
-           /* int db = gettime(1)[0];
-            int db1 = gettime(1)[1];
-            p.chat(String.valueOf(db));
-            p.chat(String.valueOf(db1));*/
-            }
+        p.kickPlayer("this is a test");
+        timetest(p);
         //}
+    }
+    public void timetest(Player p){
+        if (chaketime()) {
+            p.kickPlayer("not time yet");
+        } else {
+            p.sendMessage(ChatColor.RED + "Welcome to the server");
+       /* int db = gettime(1)[0];
+        int db1 = gettime(1)[1];
+        p.chat(String.valueOf(db));
+        p.chat(String.valueOf(db1));*/
+        }
     }
     //try to get time
     public boolean chaketime() {
         int i =1;
-        for (int j = 0; j < time.size(); j++) {
-        if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
+        for (int j = 0; j < times.length; j++) {
+        if ((c.get(Calendar.HOUR) >= times[j]) && (c.get(Calendar.HOUR) <= times[j+1])) {
             return true;
         }
-            pl.chat(String.valueOf(gettime(i)[1]));
-            pl.chat(String.valueOf(gettime(i)[1]));
+            pl.chat(String.valueOf(times[0]));
+            pl.chat(String.valueOf(times[1]));
             i++;
     }
             return false;
     }
-    public int[] gettime(int k/*String in*/){
+    public int[] spliter(String in){
         int[] timei = new int[2];
-      // int i=0;
-        for (int i = k-1; (i < time.size())&&(i<k); i++) {
+        int i=0;
             //System.out.println(in.get(i));
-            for (String retval: time.get(i).split("\\|")){
+            for (String retval: in.split("\\|")){
                 timei[i]=Integer.parseInt(retval);
-                pl.setDisplayName(time.get(i));
+                pl.setDisplayName(in);
                 //pl.chat(time.get(i));
-                i++;
+
             }
-        }
+        i++;
+
         return timei;
     }
 }

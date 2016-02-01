@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by nathan on 2/1/2016.
+ * This is a plugin for minecraft server for schools to use to add a timed schedual that only lets kids in on a spasific time
  */
 
 public class School_plugin extends JavaPlugin implements Listener{

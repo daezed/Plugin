@@ -55,18 +55,18 @@ public class School_plugin extends JavaPlugin implements Listener{
                 p.kickPlayer("not time yet");
             } else {
                 p.sendMessage(ChatColor.RED + "Welcome to the server");
-            int db = gettime()[j];
-            int db1 = gettime()[j++];
+            int db = gettime()[0];
+            int db1 = gettime()[1];
             p.chat(String.valueOf(db));
             p.chat(String.valueOf(db1));
             }
         }
     }
     //try to get time
-    public int[] gettime(){
+    public int[] gettime(int k){
         int[] timei = new int[2];
        // int i=0;
-        for (int i = 0; i < time.size(); i++) {
+        for (int i = k-1; (i < time.size())&&(i<=k); i++) {
             //System.out.println(in.get(i));
             for (String retval: time.get(i).split("\\|")){
                 timei[i]=Integer.parseInt(retval);

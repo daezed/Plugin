@@ -37,8 +37,8 @@ public class School_plugin extends JavaPlugin implements Listener{
     @Override// comand to add time to list
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("Addtime")) { // If the player typed /basic then do the following...
-                //time.add(args[0]);
-            i=args[0];
+                time.add(args[0]);
+            //i=args[0];
             Player p = (Player) sender;
             p.chat(i);
                 return true;
@@ -66,7 +66,7 @@ public class School_plugin extends JavaPlugin implements Listener{
     //try to get time
     public boolean chaketime() {
         for (int j = 0; j < time.size(); j++) {
-        if ((c.get(Calendar.HOUR) >= gettime(1)[0]) && (c.get(Calendar.HOUR) <= gettime(1)[1])) {
+        if ((c.get(Calendar.HOUR) >= gettime(j+1)[0]) && (c.get(Calendar.HOUR) <= gettime(j+1)[1])) {
             return true;
         }
     }

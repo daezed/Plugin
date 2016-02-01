@@ -37,7 +37,8 @@ public class School_plugin extends JavaPlugin implements Listener{
     @Override// comand to add time to list
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("Addtime")) { // If the player typed /basic then do the following...
-                time.add(args[0]);
+                //time.add(args[0]);
+            i=args[0];
             Player p = (Player) sender;
             p.chat(i);
                 return true;
@@ -50,30 +51,30 @@ public class School_plugin extends JavaPlugin implements Listener{
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         pl=p;
-        for (int j = 0; j < time.size(); j++) {
-            if ((c.get(Calendar.HOUR) >= gettime(1)[0]) && (c.get(Calendar.HOUR) <= gettime(1)[1])) {
+        //for (int j = 0; j < time.size(); j++) {
+            if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
                 p.kickPlayer("not time yet");
             } else {
                 p.sendMessage(ChatColor.RED + "Welcome to the server");
-            int db = gettime(1)[0];
-            int db1 = gettime(1)[1];
+            int db = gettime(i)[0];
+            int db1 = gettime(i)[1];
             p.chat(String.valueOf(db));
             p.chat(String.valueOf(db1));
             }
-        }
+        //}
     }
     //try to get time
-    public int[] gettime(int k){
+    public int[] gettime(/*int k*/String in){
         int[] timei = new int[2];
-       // int i=0;
-        for (int i = k-1; (i < time.size())&&(i<=k); i++) {
+       int i=0;
+       // for (int i = k-1; (i < time.size())&&(i<=k); i++) {
             //System.out.println(in.get(i));
-            for (String retval: time.get(i).split("\\|")){
+            for (String retval: in.split("\\|")){
                 timei[i]=Integer.parseInt(retval);
-                pl.chat(time.get(i));
-                //i++;
+                //pl.chat(time.get(i));
+                i++;
             }
-        }
+        //}
         return timei;
     }
 }

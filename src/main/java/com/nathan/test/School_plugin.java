@@ -70,7 +70,7 @@ public class School_plugin extends JavaPlugin implements Listener{
         if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
             return true;
         }
-            i+=2;
+            i++;
     }
             return false;
     }

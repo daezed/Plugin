@@ -2,8 +2,8 @@ name: test
 version: 0.1
 description: test
 author: nathan
-main: com.nathan.test.School_Plugin
+main: com.nathan.test.School_plugin
 commands:
-   basic:
+   AddTime:
       description: This is a demo command.
-      usage: /<command> [player]
+      usage: /<command> [time]

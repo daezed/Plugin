@@ -51,7 +51,6 @@ public class School_plugin extends JavaPlugin implements Listener{
     @EventHandler //player join event
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
-        p.kickPlayer("this is a test");
         timetest(p);
         //}
     }
@@ -68,14 +67,12 @@ public class School_plugin extends JavaPlugin implements Listener{
     }
     //try to get time
     public boolean chaketime() {
-        int i =1;
         for (int j = 0; j < times.length; j++) {
         if ((c.get(Calendar.HOUR) >= times[j]) && (c.get(Calendar.HOUR) <= times[j+1])) {
             return true;
         }
             pl.chat(String.valueOf(times[0]));
             pl.chat(String.valueOf(times[1]));
-            i++;
     }
             return false;
     }

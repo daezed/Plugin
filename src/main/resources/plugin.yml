@@ -1,0 +1,9 @@
+name: test
+version: 0.1
+description: test
+author: nathan
+main: com.nathan.test.School_Plugin
+commands:
+   basic:
+      description: This is a demo command.
+      usage: /<command> [player]

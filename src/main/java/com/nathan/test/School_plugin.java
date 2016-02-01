@@ -52,7 +52,7 @@ public class School_plugin extends JavaPlugin implements Listener{
         Player p = e.getPlayer();
         pl=p;
         //for (int j = 0; j < time.size(); j++) {
-            if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
+            if (chaketime()) {
                 p.kickPlayer("not time yet");
             } else {
                 p.sendMessage(ChatColor.RED + "Welcome to the server");
@@ -64,6 +64,12 @@ public class School_plugin extends JavaPlugin implements Listener{
         //}
     }
     //try to get time
+    public boolean chaketime(){
+        if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
+            return false;
+        }
+        return ture;
+    }
     public int[] gettime(/*int k*/String in){
         int[] timei = new int[2];
        int i=0;

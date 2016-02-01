@@ -50,27 +50,27 @@ public class School_plugin extends JavaPlugin implements Listener{
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         for (int j = 0; j < time.size(); j++) {
-        if((c.get(Calendar.HOUR)>=gettime(i)[0])&&(c.get(Calendar.HOUR)<=gettime(i)[1])){
+        if((c.get(Calendar.HOUR)>=gettime()[0])&&(c.get(Calendar.HOUR)<=gettime()[1])){
 
             p.kickPlayer("not time yet");
         }else {
             p.sendMessage(ChatColor.RED + "Welcome to the server");
-            int db = gettime(i)[0];
-            int db1 = gettime(i)[1];
+            int db = gettime()[0];
+            int db1 = gettime()[1];
             p.chat(String.valueOf(db));
             p.chat(String.valueOf(db1));
         }
         }
     }
     //try to get time
-    public int[] gettime(String in){
+    public int[] gettime(){
         int[] timei = new int[2];
-        int i=0;
+       // int i=0;
         for (int i = 0; i < time.size(); i++) {
             //System.out.println(in.get(i));
-            for (String retval: in.split("\\|")){
+            for (String retval: time.get(i).split("\\|")){
                 timei[i]=Integer.parseInt(retval);
-                i++;
+                //i++;
             }
         }
         return timei;

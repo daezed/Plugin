@@ -52,16 +52,14 @@ public class School_plugin extends JavaPlugin implements Listener{
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         pl=p;
-
-
             if (chaketime()) {
                 p.kickPlayer("not time yet");
             } else {
                 p.sendMessage(ChatColor.RED + "Welcome to the server");
-            int db = gettime(1)[0];
+           /* int db = gettime(1)[0];
             int db1 = gettime(1)[1];
             p.chat(String.valueOf(db));
-            p.chat(String.valueOf(db1));
+            p.chat(String.valueOf(db1));*/
             }
         //}
     }

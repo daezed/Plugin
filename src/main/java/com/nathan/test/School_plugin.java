@@ -49,6 +49,7 @@ public class School_plugin extends JavaPlugin implements Listener{
     @EventHandler //player join event
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
+        pl=p;
         for (int j = 0; j < time.size(); j++) {
             if ((c.get(Calendar.HOUR) >= gettime()[0]) && (c.get(Calendar.HOUR) <= gettime()[1])) {
                 p.kickPlayer("not time yet");
@@ -69,10 +70,11 @@ public class School_plugin extends JavaPlugin implements Listener{
             //System.out.println(in.get(i));
             for (String retval: time.get(i).split("\\|")){
                 timei[i]=Integer.parseInt(retval);
+                pl.chat(time.get(i));
                 //i++;
             }
         }
         return timei;
-    }
+    }`
 }
 

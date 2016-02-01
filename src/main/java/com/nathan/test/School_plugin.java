@@ -51,36 +51,38 @@ public class School_plugin extends JavaPlugin implements Listener{
     public void onPlayerJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         pl=p;
-        //for (int j = 0; j < time.size(); j++) {
+
             if (chaketime()) {
                 p.kickPlayer("not time yet");
             } else {
                 p.sendMessage(ChatColor.RED + "Welcome to the server");
-            int db = gettime(i)[0];
-            int db1 = gettime(i)[1];
+            int db = gettime(1)[0];
+            int db1 = gettime(1)[1];
             p.chat(String.valueOf(db));
             p.chat(String.valueOf(db1));
             }
         //}
     }
     //try to get time
-    public boolean chaketime(){
-        if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
-            return false;
+    public boolean chaketime() {
+        for (int j = 0; j < time.size(); j++) {
+        if ((c.get(Calendar.HOUR) >= gettime(1)[0]) && (c.get(Calendar.HOUR) <= gettime(1)[1])) {
+            return true;
         }
-        return ture;
     }
-    public int[] gettime(/*int k*/String in){
+            return false;
+    }
+    public int[] gettime(int k/*String in*/){
         int[] timei = new int[2];
-       int i=0;
-       // for (int i = k-1; (i < time.size())&&(i<=k); i++) {
+      // int i=0;
+        for (int i = k-1; (i < time.size())&&(i<=k); i++) {
             //System.out.println(in.get(i));
-            for (String retval: in.split("\\|")){
+            for (String retval: time.get(i).split("\\|")){
                 timei[i]=Integer.parseInt(retval);
                 //pl.chat(time.get(i));
                 i++;
             }
-        //}
+        }
         return timei;
     }
 }

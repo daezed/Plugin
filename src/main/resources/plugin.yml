@@ -7,8 +7,8 @@ main: com.nathan.test.School_plugin
 
 commands:
    AddTime:
-     permission: School_plugin.Addtime
-     permission-message: No permissions
+      permission: School_plugin.Addtime
+      permission-message: You are not a teacher
       description: This is a demo command.
       usage: /<command> [time]
 

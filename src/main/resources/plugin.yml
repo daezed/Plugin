@@ -8,7 +8,7 @@ main: com.nathan.test.School_plugin
 commands:
    Server_Time:
       description: This will give you the time.
-      usage: /<command>
+      usage: /<command> [now]
    AddTime:
       permission: School_plugin.Addtime
       permission-message: You are not a teacher

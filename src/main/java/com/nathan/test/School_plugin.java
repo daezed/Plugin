@@ -85,6 +85,12 @@ public class School_plugin extends JavaPlugin implements Listener {
 
     @Override// comand to add time to list
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (cmd.getName().equalsIgnoreCase("Server_Time")&&(args[0].equals("now"))) {
+            Player p =(Player)sender;
+            p.chat(String.valueOf(c.get(Calendar.HOUR_OF_DAY))+":"+String.valueOf(c.get(Calendar.MINUTE)));
+
+        }
+        System.out.println("test");
         if (cmd.getName().equalsIgnoreCase("Addtime")) { // If the player typed /basic then do the following...
             time.add(args[0]);
             //i=args[0];
@@ -93,19 +99,10 @@ public class School_plugin extends JavaPlugin implements Listener {
                 {
                     all.kickPlayer("sorry time to go");
                 }
-            } else {
-
-            /* int db = gettime(1)[0];
-              int db1 = gettime(1)[1];
-              p.chat(String.valueOf(db));
- -            p.chat(String.valueOf(db1));
- +            p.chat(String.valueOf(db1));*/
             }
-            if (cmd.getName().equalsIgnoreCase("Server_Time")) {
-                Player p =(Player)sender;
-                p.chat(String.valueOf(c.get(Calendar.HOUR_OF_DAY))+":"+String.valueOf(c.get(Calendar.MINUTE)));
 
-            }
+
+
 
             return true;
         } else if (cmd.getName().equalsIgnoreCase("basic2")) {

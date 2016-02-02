@@ -32,7 +32,7 @@ public class School_plugin extends JavaPlugin implements Listener {
         time.clear();
 
         try {
-            File ft = new File("newfile.txt");
+            File ft = new File("timefile.txt");
             f=ft;
             if (ft.createNewFile()){
                 System.out.println("File is created!");
@@ -56,13 +56,7 @@ public class School_plugin extends JavaPlugin implements Listener {
         }catch(IOException e){
             e.printStackTrace();
         }
-        int h=0;
-        for (String retval : time.get(h).split("\\|")) {
-           // System.out.println(time.toString());
-            //System.out.println(retval);
-            h++;
 
-        }
 
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }
@@ -106,6 +100,11 @@ public class School_plugin extends JavaPlugin implements Listener {
               p.chat(String.valueOf(db));
  -            p.chat(String.valueOf(db1));
  +            p.chat(String.valueOf(db1));*/
+            }
+            if (cmd.getName().equalsIgnoreCase("Server_Time")) {
+                Player p =(Player)sender;
+                p.chat(String.valueOf(c.get(Calendar.HOUR_OF_DAY))+":"+String.valueOf(c.get(Calendar.MINUTE));
+
             }
 
             return true;

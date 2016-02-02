@@ -44,24 +44,54 @@ public class School_plugin extends JavaPlugin implements Listener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader =
+                    new FileReader(f);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+
+            // Always close files.
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                    "Unable to open file '" +
+                            f + "'");
+        }
+        catch(IOException ex) {
+            System.out.println(
+                    "Error reading file '"
+                            + f + "'");
+            // Or we could just do this:
+            // ex.printStackTrace();
+        }
+        for (String retval : BufferedReader.readLine.split("!")) {
+            // pl.setDisplayName(time.get(i));
+            //pl.chat(time.get(i))
+        }
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
     public void onDisable() {
+        String end="";
         for (int i = 0; (i < time.size()); i++) {
+            end=(end+"!"+time.get(i));
+        }
+
             try {
-                PrintWriter fw = new PrintWriter(new FileWriter("out.txt"));
+                FileWriter fw = new FileWriter(f);
                 BufferedWriter bw = new BufferedWriter(fw);
-                co=bw;
-                bw.write(time.get(i));
+                bw.write(end);
                 bw.newLine();
+                bw.close();
             } catch (IOException e) {
                 e.printStackTrace();
 
             }
-        }
-        try{co.close();}catch(IOException e){e.printStackTrace();}
+
 
 
     }

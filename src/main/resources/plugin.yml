@@ -3,7 +3,16 @@ version: 0.1
 description: test
 author: nathan
 main: com.nathan.test.School_plugin
+
+
 commands:
    AddTime:
+     permission: School_plugin.Addtime
+     permission-message: No permissions
       description: This is a demo command.
       usage: /<command> [time]
+
+
+permissions:
+    School_Plugin.Addtime:
+        default: op

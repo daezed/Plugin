@@ -119,6 +119,7 @@ public class School_plugin extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         pl = p;
+        System.out.println((c.get(Calendar.HOUR_OF_DAY)));
 
         if (chaketime()) {
             p.kickPlayer("not time yet");
@@ -141,23 +142,23 @@ public class School_plugin extends JavaPlugin implements Listener {
             //System.out.println(c.get(Calendar.HOUR));
             //System.out.println(gettime(i)[0]);
             //System.out.println(gettime(i)[1]);
-            if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
+            if ((c.get(Calendar.HOUR_OF_DAY) >= gettime(i)[0]) && (c.get(Calendar.HOUR_OF_DAY) <= gettime(i)[1])&&(c.get(Calendar.MINUTE) >= gettime(i)[2]) && (c.get(Calendar.MINUTE) <= gettime(i)[3])){
                 return true;
             }
-            pl.chat(String.valueOf(gettime(i)[1]));
-            pl.chat(String.valueOf(gettime(i)[1]));
+            //pl.chat(String.valueOf(gettime(i)[1]));
+            //pl.chat(String.valueOf(gettime(i)[1]));
             i++;
         }
         return false;
     }
 
     public int[] gettime(int k/*String in*/) {
-        int[] timei = new int[2];
+        int[] timei = new int[4];
         int h=0;
         for (int i = k - 1; (i < time.size()) && (i < k); i++) {
             //System.out.println(in.get(i));
             for (String retval : time.get(i).split("\\|")) {
-                System.out.println(time.toString());
+                //System.out.println(time.toString());
                 timei[h] = Integer.parseInt(retval);
                 // pl.setDisplayName(time.get(i));
                 //pl.chat(time.get(i));

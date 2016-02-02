@@ -51,6 +51,15 @@ public class School_plugin extends JavaPlugin implements Listener {
         }catch(IOException e){
             e.printStackTrace();
         }
+        int h=0;
+        for (String retval : time.get(h).split("\\|")) {
+            System.out.println(time.toString());
+           System.out.println(retval);
+            // pl.setDisplayName(time.get(i));
+            //pl.chat(time.get(i));
+            h++;
+
+        }
 
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }
@@ -97,7 +106,7 @@ public class School_plugin extends JavaPlugin implements Listener {
         pl = p;
 
         if (chaketime()) {
-            p.kickPlayer("not time yet");
+           // p.kickPlayer("not time yet");
         } else {
             p.sendMessage(ChatColor.RED + "Welcome to the server");
 
@@ -114,6 +123,9 @@ public class School_plugin extends JavaPlugin implements Listener {
     public boolean chaketime() {
         int i = 1;
         for (int j = 0; j < time.size(); j++) {
+            System.out.println(c.get(Calendar.HOUR));
+            System.out.println(gettime(i)[0]);
+            System.out.println(gettime(i)[1]);
             if ((c.get(Calendar.HOUR) >= gettime(i)[0]) && (c.get(Calendar.HOUR) <= gettime(i)[1])) {
                 return true;
             }
@@ -129,9 +141,7 @@ public class School_plugin extends JavaPlugin implements Listener {
         int h=0;
         for (int i = k - 1; (i < time.size()) && (i < k); i++) {
             //System.out.println(in.get(i));
-            h=0;
             for (String retval : time.get(i).split("\\|")) {
-                System.out.println(retval);
                 timei[h] = Integer.parseInt(retval);
                 // pl.setDisplayName(time.get(i));
                 //pl.chat(time.get(i));

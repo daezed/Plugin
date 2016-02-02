@@ -94,8 +94,20 @@ public class School_plugin extends JavaPlugin implements Listener {
         if (cmd.getName().equalsIgnoreCase("Addtime")) { // If the player typed /basic then do the following...
             time.add(args[0]);
             //i=args[0];
-            Player p = (Player) sender;
-            p.chat(i);
+            if (chaketime()) {
+                for(Player all : Bukkit.getServer().getOnlinePlayers())
+                {
+                    all.kickPlayer("sorry time to go");
+                }
+            } else {
+
+            /* int db = gettime(1)[0];
+              int db1 = gettime(1)[1];
+              p.chat(String.valueOf(db));
+ -            p.chat(String.valueOf(db1));
+ +            p.chat(String.valueOf(db1));*/
+            }
+
             return true;
         } else if (cmd.getName().equalsIgnoreCase("basic2")) {
             return true;

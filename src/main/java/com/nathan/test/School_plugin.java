@@ -11,6 +11,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -22,13 +26,26 @@ import java.util.List;
  */
 
 public class School_plugin extends JavaPlugin implements Listener {
-    public Calendar c = GregorianCalendar.getInstance();
-    public List<String> time = new ArrayList<String>();
-    public String i = "0|0";
-    public Player pl;
+    private Calendar c = GregorianCalendar.getInstance();
+    private List<String> time = new ArrayList<String>();
+    private File f;
+    private String i = "0|0";
+    private Player pl;
 
     @Override
     public void onEnable() {
+        try {
+            File file = new File("newfile.txt");
+            f=file;
+            if (file.createNewFile()){
+                System.out.println("File is created!");
+            }else{
+                System.out.println("File already exists.");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }
 
@@ -40,6 +57,7 @@ public class School_plugin extends JavaPlugin implements Listener {
     @Override// comand to add time to list
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("Addtime")) { // If the player typed /basic then do the following...
+            AddToFile(args[0]);
             time.add(args[0]);
             //i=args[0];
             Player p = (Player) sender;
@@ -97,5 +115,17 @@ public class School_plugin extends JavaPlugin implements Listener {
             }
         }
         return timei;
+    }
+    public void AddToFile(String in){
+        try {
+            FileWriter fw = new FileWriter(f.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(in);
+            bw.close();
+        }catch(IOException e){
+            e.printStackTrace();
+
+        }
+
     }
 }

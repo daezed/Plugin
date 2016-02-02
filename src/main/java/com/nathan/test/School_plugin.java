@@ -103,7 +103,7 @@ public class School_plugin extends JavaPlugin implements Listener {
             }
             if (cmd.getName().equalsIgnoreCase("Server_Time")) {
                 Player p =(Player)sender;
-                p.chat(String.valueOf(c.get(Calendar.HOUR_OF_DAY))+":"+String.valueOf(c.get(Calendar.MINUTE));
+                p.chat(String.valueOf(c.get(Calendar.HOUR_OF_DAY))+":"+String.valueOf(c.get(Calendar.MINUTE)));
 
             }
 

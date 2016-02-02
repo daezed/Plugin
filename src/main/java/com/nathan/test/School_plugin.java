@@ -11,10 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -26,6 +23,7 @@ import java.util.List;
  */
 
 public class School_plugin extends JavaPlugin implements Listener {
+    private BufferedWriter co;
     private Calendar c = GregorianCalendar.getInstance();
     private List<String> time = new ArrayList<String>();
     private File f;
@@ -51,13 +49,26 @@ public class School_plugin extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
+        for (int i = 0; (i < time.size()); i++) {
+            try {
+                PrintWriter fw = new PrintWriter(new FileWriter("out.txt"));
+                BufferedWriter bw = new BufferedWriter(fw);
+                co=bw;
+                bw.write(time.get(i));
+                bw.newLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+        try{co.close();}catch(IOException e){e.printStackTrace();}
+
 
     }
 
     @Override// comand to add time to list
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("Addtime")) { // If the player typed /basic then do the following...
-            AddToFile(args[0]);
             time.add(args[0]);
             //i=args[0];
             Player p = (Player) sender;
@@ -116,16 +127,5 @@ public class School_plugin extends JavaPlugin implements Listener {
         }
         return timei;
     }
-    public void AddToFile(String in){
-        try {
-            FileWriter fw = new FileWriter(f.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(in);
-            bw.close();
-        }catch(IOException e){
-            e.printStackTrace();
 
-        }
-
-    }
 }

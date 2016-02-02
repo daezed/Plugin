@@ -30,9 +30,9 @@ public class School_plugin extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         try {
-            File file = new File("newfile.txt");
-            f=file;
-            if (file.createNewFile()){
+            File ft = new File("newfile.txt");
+            f=ft;
+            if (ft.createNewFile()){
                 System.out.println("File is created!");
             }else{
                 System.out.println("File already exists.");
@@ -41,19 +41,16 @@ public class School_plugin extends JavaPlugin implements Listener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scanner in = new Scanner(System.in);
-        try
-        {
-            in = new Scanner(new File("article.txt"));
-        }//end try
-        catch(Exception e)
-        {
-            System.out.println("Cannot find file... Exiting Program");
-            return;
-        }//end catch
-        for (String retval : in.next().split("!")) {
-            time.add(retval);
+        try{
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            for (String retval : br.readLine().split("\\|")) {
+                System.out.println(br.readLine());
+            }s
+        }catch(IOException e){
+            e.printStackTrace();
         }
+
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }
 

@@ -12,10 +12,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by nathan on 2/1/2016.
@@ -44,32 +41,18 @@ public class School_plugin extends JavaPlugin implements Listener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader =
-                    new FileReader(f);
-
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader =
-                    new BufferedReader(fileReader);
-
-            // Always close files.
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                    "Unable to open file '" +
-                            f + "'");
-        }
-        catch(IOException ex) {
-            System.out.println(
-                    "Error reading file '"
-                            + f + "'");
-            // Or we could just do this:
-            // ex.printStackTrace();
-        }
-        for (String retval : BufferedReader.readLine.split("!")) {
-            // pl.setDisplayName(time.get(i));
-            //pl.chat(time.get(i))
+        Scanner in = new Scanner(System.in);
+        try
+        {
+            in = new Scanner(new File("article.txt"));
+        }//end try
+        catch(Exception e)
+        {
+            System.out.println("Cannot find file... Exiting Program");
+            return;
+        }//end catch
+        for (String retval : in.next().split("!")) {
+            time.add(retval);
         }
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }

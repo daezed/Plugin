@@ -44,9 +44,10 @@ public class School_plugin extends JavaPlugin implements Listener {
         try{
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
-            for (String retval : br.readLine().split("\\|")) {
-                System.out.println(br.readLine());
-            }s
+            for (String retval : br.readLine().split("!")) {
+                System.out.println(retval);
+                time.add(retval);
+            }
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -128,7 +129,9 @@ public class School_plugin extends JavaPlugin implements Listener {
         int h=0;
         for (int i = k - 1; (i < time.size()) && (i < k); i++) {
             //System.out.println(in.get(i));
+            h=0;
             for (String retval : time.get(i).split("\\|")) {
+                System.out.println(retval);
                 timei[h] = Integer.parseInt(retval);
                 // pl.setDisplayName(time.get(i));
                 //pl.chat(time.get(i));

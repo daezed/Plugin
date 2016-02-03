@@ -13,7 +13,7 @@ commands:
       permission: School_plugin.Addtime
       permission-message: You are not a teacher
       description: This is a demo command.
-      usage: /<command> [time]
+      usage: /<command> [hour1|hour2|min1|min2]
 
 
 permissions:

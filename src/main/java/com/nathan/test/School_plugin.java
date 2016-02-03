@@ -103,7 +103,6 @@ public class School_plugin extends JavaPlugin implements Listener {
 
 
 
-
             return true;
         } else if (cmd.getName().equalsIgnoreCase("basic2")) {
             return true;
@@ -115,8 +114,7 @@ public class School_plugin extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         pl = p;
-        System.out.println((c.get(Calendar.HOUR_OF_DAY)));
-
+        System.out.println(chaketime());
         if (chaketime()) {
             p.kickPlayer("not time yet");
         } else {
@@ -138,6 +136,12 @@ public class School_plugin extends JavaPlugin implements Listener {
             //System.out.println(c.get(Calendar.HOUR));
             //System.out.println(gettime(i)[0]);
             //System.out.println(gettime(i)[1]);
+           //System.out.println(gettime(i)[2]);
+           // System.out.println(gettime(i)[3]);
+            System.out.print((c.get(Calendar.HOUR_OF_DAY) >= gettime(i)[0]) && (c.get(Calendar.HOUR_OF_DAY) <= gettime(i)[1])&&(c.get(Calendar.MINUTE) >= gettime(i)[2]) && (c.get(Calendar.MINUTE) <= gettime(i)[3]));
+            System.out.print(" "+gettime(i)[0]+"|"+gettime(i)[1]+"|"+gettime(i)[2]+"|"+gettime(i)[3]);
+            System.out.println();
+
             if ((c.get(Calendar.HOUR_OF_DAY) >= gettime(i)[0]) && (c.get(Calendar.HOUR_OF_DAY) <= gettime(i)[1])&&(c.get(Calendar.MINUTE) >= gettime(i)[2]) && (c.get(Calendar.MINUTE) <= gettime(i)[3])){
                 return true;
             }

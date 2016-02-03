@@ -87,6 +87,7 @@ public class School_plugin extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("Server_Time")&&(args[0].equals("now"))) {
             Player p =(Player)sender;
+
             p.chat(String.valueOf(c.get(Calendar.HOUR_OF_DAY))+":"+String.valueOf(c.get(Calendar.MINUTE)));
 
         }
@@ -138,8 +139,9 @@ public class School_plugin extends JavaPlugin implements Listener {
             //System.out.println(gettime(i)[1]);
            //System.out.println(gettime(i)[2]);
            // System.out.println(gettime(i)[3]);
+
             System.out.print((c.get(Calendar.HOUR_OF_DAY) >= gettime(i)[0]) && (c.get(Calendar.HOUR_OF_DAY) <= gettime(i)[1])&&(c.get(Calendar.MINUTE) >= gettime(i)[2]) && (c.get(Calendar.MINUTE) <= gettime(i)[3]));
-            System.out.print(" "+gettime(i)[0]+"|"+gettime(i)[1]+"|"+gettime(i)[2]+"|"+gettime(i)[3]);
+            System.out.print(" "+gettime(i)[0]+"|"+gettime(i)[1]+"|"+gettime(i)[2]+"|"+gettime(i)[3]+"     "+String.valueOf(c.get(Calendar.HOUR_OF_DAY)+":"+String.valueOf(c.get(Calendar.MINUTE)))+String.valueOf(c.getTime()));
             System.out.println();
 
             if ((c.get(Calendar.HOUR_OF_DAY) >= gettime(i)[0]) && (c.get(Calendar.HOUR_OF_DAY) <= gettime(i)[1])&&(c.get(Calendar.MINUTE) >= gettime(i)[2]) && (c.get(Calendar.MINUTE) <= gettime(i)[3])){

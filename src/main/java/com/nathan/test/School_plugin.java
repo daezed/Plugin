@@ -84,6 +84,9 @@ public class School_plugin extends JavaPlugin implements Listener {
 
     @Override// comand to add time to list
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if(cmd.getName().equalsIgnoreCase("clear_times")){
+            time.clear();
+        }
         if (cmd.getName().equalsIgnoreCase("Server_Time")&&(args[0].equals("now"))) {
             Player p =(Player)sender;
             Calendar c = GregorianCalendar.getInstance();
@@ -97,7 +100,9 @@ public class School_plugin extends JavaPlugin implements Listener {
             if (chaketime()) {
                 for(Player all : Bukkit.getServer().getOnlinePlayers())
                 {
-                    all.kickPlayer("sorry time to go");
+                    if(!(all.isOp())){
+                        all.kickPlayer("sorry time to go");
+                    }
                 }
             }
 
@@ -115,7 +120,7 @@ public class School_plugin extends JavaPlugin implements Listener {
         Player p = e.getPlayer();
         pl = p;
         System.out.println(chaketime());
-        if (chaketime()) {
+        if (chaketime()&&!(p.isOp())) {
             p.kickPlayer("not time yet");
         } else {
             p.sendMessage(ChatColor.RED + "Welcome to the server");

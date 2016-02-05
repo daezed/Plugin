@@ -6,6 +6,11 @@ main: com.nathan.test.School_plugin
 
 
 commands:
+   clear_times:
+      description: This command clears the times set
+      permission: School_plugin.clear_times
+      permission-message: You are not a teacher
+      usage: /<command>
    Server_Time:
       description: This will give you the time.
       usage: /<command> [now]
@@ -18,4 +23,6 @@ commands:
 
 permissions:
     School_Plugin.Addtime:
+        default: op
+    School_Plugin.clear_times:
         default: op
